@@ -1,0 +1,185 @@
+/* Layout */
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Container */
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-family: "Courier New", Courier, monospace;
+  padding: 3rem;
+  background: linear-gradient(145deg, #f0f0f3, #cacaca);
+  border-radius: 20px;
+  width: 320px;
+  margin: 4rem auto;
+  box-shadow: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
+}
+
+/* Timer display */
+.timer-display {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #222;
+  background: #e0e0e0;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+  letter-spacing: 2px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Buttons container */
+.timer-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Base button styles for all buttons */
+.btn,
+.lap-btn {
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+  transition: all 0.2s ease;
+}
+
+/* Hover effect for all buttons */
+.btn:hover,
+.lap-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 5px 5px 15px #bebebe, -5px -5px 15px #ffffff;
+}
+
+/* Play/Stop/Reset buttons */
+.btn {
+  background: linear-gradient(145deg, #d1d1d1, #ffffff);
+  color: #333;
+}
+
+.btn:hover {
+  background: linear-gradient(145deg, #c0c0c0, #f5f5f5);
+}
+
+.btn.active {
+  background: linear-gradient(145deg, #4caf50, #2e7d32);
+  color: #fff;
+}
+
+/* Optional pulse animation for active buttons */
+.btn.active::after {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-top: 5px;
+  border-radius: 50%;
+  background: #fff;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+}
+
+/* Lap button */
+.lap-btn:hover:not(:disabled) {
+  background: linear-gradient(
+    145deg,
+    #42a5f5,
+    #1e88e5
+  ); /* new hover gradient */
+  color: #fff;
+  transform: scale(1.05); /* subtle scale effect */
+}
+
+.lap-btn:disabled {
+  background: #90caf9;
+  cursor: not-allowed;
+}
+
+/* Laps container */
+.laps-container {
+  margin-top: 2rem;
+  width: 100%;
+  max-height: 220px;
+  overflow-y: auto;
+  background: #f0f0f0;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: inset 2px 2px 5px #d0d0d0, inset -2px -2px 5px #ffffff;
+}
+
+.laps-container h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  text-align: center;
+  color: #333;
+}
+
+.laps-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.laps-container li {
+  padding: 0.5rem;
+  font-family: monospace;
+  font-weight: 500;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+}
+
+.laps-container li:nth-child(odd) {
+  background: #e3f2fd;
+}
+
+.laps-container li:last-child {
+  border-bottom: none;
+}
+
+/* Scrollbar styling */
+.laps-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.laps-container::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 3px;
+}
+
+.laps-container::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
